@@ -2,20 +2,25 @@
 
 ### Commandes
 
-| émetteur | trame                     | description                                                           |
-| -------- | ------------------------- | --------------------------------------------------------------------- |
-| tablette | `a#`                      | requête de ping a la règle                                            |
-| règle    | `%a:e#`                   | réponse du ping de la règle                                           |
-| tablette | `b#`                      | requête des information de la règle                                   |
-| règle    | `%b:[NAME],[VERSION],#`   | réponse du nom et de la version de la règle                           |
-| tablette | `&q#`                     | requête sur le pourcentage de batterie                                |
-| règle    | `%q:[PERCENT_OF_BATT],0#` | réponse du pourcentage de batterie                                    |
-| tablette | `&t#`                     | requête pour l'humidité et la température du boitier                  |
-| règle    | `$t,[TEMP] °C,[HUM] %#`   | réponse pour l'humidité et la température du boitier                  |
-| règle    | `%l,[VAL]#`               | prise de mesure de la règle en millimètre                             |
-| règle    | `%t:0#`                   | envoyé quand l'aimant est déposé sur la règle (avant prise de mesure) |
-| règle    | `%t:1#`                   | envoyé quand l'aimant est enlevé de la règle (après prise de mesure)  |
+| version minimum | émetteur | trame                     | description                                                                         |
+| --------------- | -------- | ------------------------- | ----------------------------------------------------------------------------------- |
+| initial         | tablette | `a#`                      | requête de ping a la règle                                                          |
+| initial         | règle    | `%a:e#`                   | réponse du ping de la règle                                                         |
+| initial         | tablette | `b#`                      | requête des information de la règle                                                 |
+| initial         | règle    | `%b:[NAME],[VERSION],#`   | réponse du nom et de la version de la règle                                         |
+| initial         | tablette | `&q#`                     | requête sur le pourcentage de batterie                                              |
+| initial         | règle    | `%q:[PERCENT_OF_BATT],0#` | réponse du pourcentage de batterie                                                  |
+| initial         | tablette | `&t#`                     | requête pour l'humidité et la température du boitier                                |
+| initial         | règle    | `$t,[TEMP] °C,[HUM] %#`   | réponse pour l'humidité et la température du boitier                                |
+| initial         | règle    | `%l,[VAL]#`               | prise de mesure de la règle en millimètre                                           |
+| initial         | règle    | `%t:0#`                   | envoyé quand l'aimant est déposé sur la règle (avant prise de mesure)               |
+| initial         | règle    | `%t:1#`                   | envoyé quand l'aimant est enlevé de la règle (après prise de mesure)                |
+| v1.4.0          | tablette | `%cal:start#`             | Lancement de la procédure de calibration par le code                                |
+| v1.4.0          | règle    | `%cal:put,[POS]#`         | La règle demande à poser le pointeur sur la position `[POS]` souvent `0` puis `375` |
+| v1.4.0          | règle    | `%cal:remove#`            | La règle demande à enlever le pointeur de la position                               |
+| v1.4.0          | règle    | `%cal:done#`              | La règle indique que la calibration est terminé                                     |
 
+- *version minimum indique que les commandes ne sont pas disponible pour les règles avant cette version.*
 - *Toutes les commandes sont optionnel*
 - *Toutes les commandes sont des Strings.*
 - *Les commandes envoyées par la règle ne contienne pas de retours a la ligne.
